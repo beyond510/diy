@@ -143,14 +143,14 @@ do
 	    check_existing_cron=`grep -c "$croname" ${ConfigDir}/jd/config/crontab.list`
 	    echo $name "开始添加定时..."
 	    if [ "${check_existing_cron}" -eq 0 ]; then
-	      sed -i "/hangup/a${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
+	      sed -i "22i${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
 	      echo -e "$name 成功添加定时!!!\n"
 	    else
 	      if [ "${Enablerenew}" = "true" ]; then
 	      	echo -e "检测到"$name"定时已存在开始替换...\n"
 	        grep -v "$croname" ${ConfigDir}/jd/config/crontab.list > output.txt
 		      mv -f output.txt ${ConfigDir}/jd/config/crontab.list
-		      sed -i "/hangup/a${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
+		      sed -i "22i${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
 	        echo -e "替换"$name"定时成功!!!"
 	      else
 	        echo -e "$name 存在定时,已选择不替换...\n"
