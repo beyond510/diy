@@ -48,6 +48,7 @@ z_city_cash.js
 z_oneplus.js
 z_grassy.js
 z_sister.js
+z_xmf.js
 
 "
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -138,19 +139,19 @@ do
 	  if [ -z "${script_date}" ]; then
 	    cron_min=$(rand 1 59)
 	    cron_hour=$(rand 7 9)
-      [ $(grep -c "$croname" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${cron_min} ${cron_hour} * * * bash jd $croname"  ${ConfigDir}/jd/config/crontab.list
+      [ $(grep -c "$croname" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "21i${cron_min} ${cron_hour} * * * otask $croname"  ${ConfigDir}/jd/config/crontab.list
 	  else
 	    check_existing_cron=`grep -c "$croname" ${ConfigDir}/jd/config/crontab.list`
 	    echo $name "开始添加定时..."
 	    if [ "${check_existing_cron}" -eq 0 ]; then
-	      sed -i "22i${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
+	      sed -i "21i${script_date} otask $croname"  ${ConfigDir}/jd/config/crontab.list
 	      echo -e "$name 成功添加定时!!!\n"
 	    else
 	      if [ "${Enablerenew}" = "true" ]; then
 	      	echo -e "检测到"$name"定时已存在开始替换...\n"
 	        grep -v "$croname" ${ConfigDir}/jd/config/crontab.list > output.txt
 		      mv -f output.txt ${ConfigDir}/jd/config/crontab.list
-		      sed -i "22i${script_date} otask jd $croname"  ${ConfigDir}/jd/config/crontab.list
+		      sed -i "21i${script_date} otask $croname"  ${ConfigDir}/jd/config/crontab.list
 	        echo -e "替换"$name"定时成功!!!"
 	      else
 	        echo -e "$name 存在定时,已选择不替换...\n"
@@ -177,3 +178,13 @@ do
   done
   index=$[$index+1]
 done
+cd $ConfigDir
+echo -e "开始更新 diy.sh "
+wget -q --no-check-certificate https://raw.githubusercontent.com/gys619/diy/main/diy.sh -O diy.sh.new
+if [ $? -eq 0 ]; then
+  mv -f diy.sh.new diy.sh
+  echo -e "更新 diy.sh 成功!!!"
+else
+  rm -rf diy.sh.new
+  echo -e "更新 diy.sh 失败...\n"
+fi
