@@ -49,7 +49,6 @@ z_oneplus.js
 z_grassy.js
 z_sister.js
 z_xmf.js
-
 "
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -125,7 +124,7 @@ do
   for js in $scripts_list
   do
     eval url=$url_list$js
-    eval name=$author"_"$js
+    eval name="/jd/own/raw""/"$js
     echo $name
     wget -q --no-check-certificate $url -O $name.new
 
@@ -139,7 +138,7 @@ do
 	  if [ -z "${script_date}" ]; then
 	    cron_min=$(rand 1 59)
 	    cron_hour=$(rand 7 9)
-      [ $(grep -c "$croname" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "21i${cron_min} ${cron_hour} * * * otask $croname"  ${ConfigDir}/jd/config/crontab.list
+      [ $(grep -c "$croname" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "21i${cron_min} ${cron_hour} * * * otask $croname"  ${ConfigDir}/jd/config/crontab.list #cui521的
 	  else
 	    check_existing_cron=`grep -c "$croname" ${ConfigDir}/jd/config/crontab.list`
 	    echo $name "开始添加定时..."
