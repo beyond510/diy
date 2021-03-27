@@ -1,5 +1,21 @@
 # 修改的[Hydrahail-Johnso大佬](https://github.com/Hydrahail-Johnson/diy_scripts)的DIY脚本
 # 仅仅自己瞎玩
+## docker
+```
+docker run -dit \
+   -v $PWD/jd/config:/jd/config \
+   -v $PWD/jd/log:/jd/log \
+   -v $PWD/jd/scripts:/jd/scripts \
+   -v $PWD/jd/own:/jd/own \
+   -p 5678:5678 \
+   -e ENABLE_TTYD=true \
+   -e ENABLE_HANGUP=true \
+   -e ENABLE_WEB_PANEL=true \
+   --name jd \
+   --hostname jd \
+   --restart always \
+   nevinee/jd:v4
+```
 ## 创建
 **从v3升级到v4请务必不保留配置文件，只保存好必要的信息之后全新安装。**
 ```
