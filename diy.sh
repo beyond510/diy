@@ -132,25 +132,25 @@ do
     if [ $? -eq 0 ]; then
       mv -f $name.new $name
       echo -e "$name 更新成功!!!"
-	  croname=`echo "$name"|awk -F\. '{print $1}'`
+	  #croname=`echo "$name"|awk -F\. '{print $1}'`
 	  script_date=`cat  $name|grep "http"|awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}'|sort |uniq|head -n 1`
 	  [ -z "${script_date}" ] && script_date=`cat  $name|grep -Eo "([0-9]+|\*) ([0-9]+|\*) ([0-9]+|\*) ([0-9]+|\*) ([0-9]+|\*)"|sort |uniq|head -n 1`
 	  if [ -z "${script_date}" ]; then
 	    cron_min=$(rand 1 59)
 	    cron_hour=$(rand 7 9)
-      [ $(grep -c "$croname" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "21i${cron_min} ${cron_hour} * * * otask $croname"  ${ConfigDir}/jd/config/crontab.list #cui521的
+      [ $(grep -c "$name" ${ConfigDir}/jd/config/crontab.list) -eq 0 ] && sed -i "21i${cron_min} ${cron_hour} * * * otask $croname"  ${ConfigDir}/jd/config/crontab.list #cui521的
 	  else
-	    check_existing_cron=`grep -c "$croname" ${ConfigDir}/jd/config/crontab.list`
+	    check_existing_cron=`grep -c "$name" ${ConfigDir}/jd/config/crontab.list`
 	    echo $name "开始添加定时..."
 	    if [ "${check_existing_cron}" -eq 0 ]; then
-	      sed -i "21i${script_date} otask $croname"  ${ConfigDir}/jd/config/crontab.list
+	      sed -i "21i${script_date} otask $name"  ${ConfigDir}/jd/config/crontab.list
 	      echo -e "$name 成功添加定时!!!\n"
 	    else
 	      if [ "${Enablerenew}" = "true" ]; then
 	      	echo -e "检测到"$name"定时已存在开始替换...\n"
-	        grep -v "$croname" ${ConfigDir}/jd/config/crontab.list > output.txt
+	        grep -v "$name" ${ConfigDir}/jd/config/crontab.list > output.txt
 		      mv -f output.txt ${ConfigDir}/jd/config/crontab.list
-		      sed -i "21i${script_date} otask $croname"  ${ConfigDir}/jd/config/crontab.list
+		      sed -i "21i${script_date} otask $name"  ${ConfigDir}/jd/config/crontab.list
 	        echo -e "替换"$name"定时成功!!!"
 	      else
 	        echo -e "$name 存在定时,已选择不替换...\n"
@@ -160,16 +160,16 @@ do
     else
       [ -f $name.new ] && rm -f $name.new
       echo -e "$name 脚本失效,已删除脚本...\n"
-      croname=`echo "$name"|awk -F\. '{print $1}'`
-      check_existing_cron=`grep -c "$croname" ${ConfigDir}/jd/config/crontab.list`
+      #croname=`echo "$name"|awk -F\. '{print $1}'`
+      check_existing_cron=`grep -c "$name" ${ConfigDir}/jd/config/crontab.list`
       if [ "${check_existing_cron}" -ne 0 ]; then
-        grep -v "$croname" ${ConfigDir}/jd/config/crontab.list > output.txt
+        grep -v "$name" ${ConfigDir}/jd/config/crontab.list > output.txt
         mv -f output.txt ${ConfigDir}/jd/config/crontab.list
         echo -e "检测到"$name"残留文件..."
         rm -f ${name:-default}
         echo -e "开始清理"$name"残留文件..."
         cd $LogDir
-        rm -rf ${croname:-default}
+        rm -rf ${name:-default}
         echo -e "清理"$name"残留文件完成!!!\n"
         cd $ScriptsDir
       fi
