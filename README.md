@@ -57,7 +57,7 @@ docker run -dit \
 ## 邀请码互助
 
 
-- [邀请码使用规范](./backUPgithubAction.md#互助码类环境变量)(仅限云端)
+- [邀请码使用规范](./backUP/githubAction.md#互助码类环境变量)(仅限云端)
 
 ## 食用方法
 
