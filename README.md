@@ -50,7 +50,7 @@ docker exec -it jd jcsv    # 记录豆豆变化情况，在log目录下存为csv
 
 请关注原作者的github，并打赏原作者支持作者不断更新。
 ## 正版镜像
-[小e维护v3](https://github.com/dockere/jd-base),[whyour大佬的qinglong](https://github.com/whyour/qinglong),[E大的nevinee/jd:v4]()
+[小e维护v3](https://github.com/dockere/jd-base)，[whyour大佬的qinglong](https://github.com/whyour/qinglong)，[E大的nevinee/jd:v4]()
 
 ### 请不要把lxk仓库京东脚本用在淘宝、咸鱼、拼多多等平台进行商业谋利，请认真阅读[Readme特别说明](https://gitee.com/lxk0301/jd_docker/blob/master/README.md#特别说明)，谢谢配合。否则我会删库跑路。
 #### 后期脚本会逐步进行加密后发布(原因:部分人偷盗脚本,然后进行改脚本内置邀请码后再次宣传修改后的)
