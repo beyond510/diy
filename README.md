@@ -1,7 +1,17 @@
 # 修改的[Hydrahail-Johnso大佬](https://github.com/Hydrahail-Johnson/diy_scripts)的DIY脚本
 # 仅仅自己瞎玩
-# docker换home路径
+# docker换home.html
+docker inspect 容器名  #查看某个容器的详细信息
+找到 
+```
+"GraphDriver": {
+            "Data": {
+                "LowerDir": 
+                xxxxxxxxxxx自己摘取路径，如下
 /usr/local/lighthouse/softwares/btpanel/server/docker/overlay2/~l/VL6MJOVPUDQZ6L4GHTSW3L663O/jd/panel/public~
+![image](https://user-images.githubusercontent.com/59304891/112744340-e520c900-8fd1-11eb-8cad-8271d8153e1d.png)
+
+```
 ## docker
 ```
 docker run -dit \
