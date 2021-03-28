@@ -31,7 +31,8 @@ docker run -dit \
    --restart always \
    nevinee/jd:v4
 ```
-## 命令
+## [v3命令](./backUp/README.md)
+## v4命令
 jtask mtask otask链接的都是同一个脚本，m=my，o=own，j=jd。三者区分仅用在crontab.list中，以区别不同类型任务，手动运行直接jtask即可。
 ```
 docker exec -it jd jtask   # 运行jd_scripts脚本，类似于v3版本的jd命令
