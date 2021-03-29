@@ -32,7 +32,8 @@ my_scripts_list_1="
 
 ############################## 维护:i-chenzhe ##############################
 # 库地址:https://github.com/i-chenzhe/qx
-scripts_base_url_2=https://ghproxy.com/https://raw.githubusercontent.com/i-chenzhe/qx/main/
+#scripts_base_url_2=https://ghproxy.com/https://raw.githubusercontent.com/i-chenzhe/qx/main/
+scripts_base_url_2=https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/scripts/
 my_scripts_list_2="
 jd_entertainment.js
 jd_fanslove.js
