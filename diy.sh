@@ -96,6 +96,11 @@ my_scripts_list_7="
 DIY_shopsign.js
 
 "
+############################## 维护:和尚monk-coder ##############################
+# 库地址:https://github.com/Hydrahail-Johnson/diy_scripts
+scripts_base_url_8=https://ghproxy.com/https://raw.githubusercontent.com/monk-coder/dust/dust/rewrite/
+my_scripts_list_8="
+m_get_shop_lottery.js
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ############################ 是否强制替换脚本的定时 ############################
