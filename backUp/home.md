@@ -1,4 +1,4 @@
-# docker换home.html
+# 下面方法容易实现。diy里加了换home.html
 docker inspect 容器名  #查看某个容器的详细信息
 找到 
 ```
