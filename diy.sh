@@ -182,7 +182,7 @@ done
 #panelDir=/usr/local/lighthouse/softwares/btpanel/server/docker/overlay2/8eafa386f77b33f4d48c39ae49c826ef09cf67be19605fe650bd6644aad81fd3/merged/jd/panel/public
 ##~panelDir=${ShellDir}/panel/public
 cd /jd/panel/public
-wget -q --no-check-certificate https://raw.githubusercontent.com/gys619/diy/main/home.html -O home.html.new
+wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/home.html -O home.html.new
 if [ $? -eq 0 ]; then
   mv -f home.html.new home.html
   echo -e "恢复 HomePage 成功!!!"
@@ -193,7 +193,7 @@ fi
 
 cd $ConfigDir
 echo -e "开始更新 diy.sh "
-wget -q --no-check-certificate https://raw.githubusercontent.com/gys619/diy/main/diy.sh -O diy.sh.new
+wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/diy.sh -O diy.sh.new
 if [ $? -eq 0 ]; then
   mv -f diy.sh.new diy.sh
   echo -e "更新 diy.sh 成功!!!"
