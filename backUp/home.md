@@ -1,4 +1,5 @@
-# 下面方法容易实现。diy里加了换home.html
+
+# 下面方法有效期一天。diy.sh已加换homt.html
 docker inspect 容器名  #查看某个容器的详细信息
 找到 
 ```
