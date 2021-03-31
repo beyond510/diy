@@ -206,5 +206,6 @@ else
   rm -rf diy.sh.new
   echo -e "更新 diy.sh 失败...\n"
 fi
-cd /jd#####再次更新。防止diy新增的脚本，没有及时同步过来
+#####再次更新。防止diy新增的脚本，没有及时同步过来
+cd /jd
 bash jup
