@@ -98,9 +98,9 @@ DIY_shopsign.js
 "
 ############################## 维护:和尚monk-coder ##############################
 # 库地址:https://github.com/Hydrahail-Johnson/diy_scripts
-scripts_base_url_8=https://ghproxy.com/https://raw.githubusercontent.com/monk-coder/dust/dust/rewrite/
+scripts_base_url_8=https://ghproxy.com/https://raw.githubusercontent.com/monk-coder/dust/dust/car/
 my_scripts_list_8="
-m_get_shop_lottery.js
+monk_shop_add_to_car.js
 "
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
