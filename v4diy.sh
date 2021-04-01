@@ -184,52 +184,52 @@ do
   done
   index=$[$index+1]
 done
-
-echo -e "开始安装npm "
+##############################安装npm##############################
 #node_modules路径
 nodePath="/jd/scripts/node_modules"
+echo -e "开始安装npm"
 #判断panel文件夹是否存在，若不存在，复制/jd目录内
 if [[ ! -d "$nodePath" ]]; then
  echo "npm不存在."
  npm install || npm install --registry=https://registry.npm.taobao.org
- echo "npm已经装完"
+ echo "npm已经装完\n"
 else
- echo "npm存在."
+ echo "npm存在.\n"
 fi
 
-echo -e "开始创建auto.json文件 "
-###创建auto.json文件。没有这个文件无法登录进面板
-dirAndName="/jd/config/auth.json"
-if [[ ! -d "$dirAndName" ]]; then
- mkdir $dirAndName
- echo "创建文件成功"
- echo "{"user":"admin","password":"adminadmin"}" >>auto.json
+##############################创建auth##############################
+echo -e "开始创建auth"
+autoPath="/jd/config/auth.json"
+if [[ ! -f "$autoPath" ]]; then
+  echo "auth.json文件不存在"
+  wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/auth.json -O auth.json
+  echo "auth.json文件创建成功\n"
 else
- echo "文件已经存在"
+ echo "auth.json还存在.\n"
 fi
-
-echo -e "启动面板 "
-#panel路径#######需要把panel复制到config目录下
+##############################安装面板 首先要把panel复制到config文件夹下##############################
+#panel路径
+echo -e "开始安装面板 "
 PanelPath="/jd/panel"
 #判断panel文件夹是否存在，若不存在，复制/jd目录内
 if [[ ! -d "$PanelPath" ]]; then
- echo "控制面板已和谐，重新拷贝面板目录..."
+ echo "控制面板已和谐，重新拷贝面板目录..\n."
  cp -r /jd/config/panel /jd/
- echo "启动控制面板挂载程序..."
- pm2 stop /jd/panel/server.js   #停止面板
- pm2 start /jd/panel/server.js  #启动面板
+ echo "启动控制面板挂载程序...\n"
+ pm2 stop /jd/panel/server.js
+ pm2 start /jd/panel/server.js
 else
- echo "控制面板还存在."
+ echo "控制面板还存在.\n"
 fi
 
 ############################## 恢复HomePage ##############################
+echo -e "开始恢复homePage "
 ##panelDir=${ShellDir}/panel/public
-echo -e "开始更新恢复home "
 cd /jd/panel/public
 wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/home.html -O home.html.new
 if [ $? -eq 0 ]; then
   mv -f home.html.new home.html
-  echo -e "恢复 HomePage 成功!!!"
+  echo -e "恢复 HomePage 成功!!!\n"
 else
   rm -rf home.html.new
   echo -e "恢复 HomePage 失败...\n"
@@ -237,7 +237,7 @@ fi
 ############################## 更新diy ##############################
 cd /jd/config
 echo -e "开始更新 diy.sh "
-wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/v4diy.sh -O diy.sh.new
+wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/diy.sh -O diy.sh.new
 if [ $? -eq 0 ]; then
   mv -f diy.sh.new diy.sh
   echo -e "更新 diy.sh 成功!!!"
