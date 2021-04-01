@@ -11,8 +11,8 @@ docker run -dit \
    -e ENABLE_WEB_PANEL=true \# 是否在启动容器时自动启动挂机程序
    --name jd \ #容器名
    --hostname jd \#主机名
-   --restart always \
-   nevinee/jd:v4
+   --restart always \ #开机自启
+   nevinee/jd:v4 #镜像地址
 ```
 ## 赞赏码(LXK大佬开发维护不易)
 <div align=center><img width="250" height="250" src="https://gitee.com/lxk0301/jd_docker/raw/master/icon/thanks.jpg"/></div>
