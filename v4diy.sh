@@ -46,7 +46,7 @@ pPath="/jd/panel/node_modules"
 echo -e "开始安装panel的npm"
 #判断panel文件夹是否存在，若不存在，复制/jd目录内
 if [[ ! -d "$pPath" ]]; then
- echo "npm存在."
+ echo "npm不存在."
  cd /jd/panel
  npm install || npm install --registry=https://registry.npm.taobao.org
  echo "npm已经装完"
