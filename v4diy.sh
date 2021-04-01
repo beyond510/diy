@@ -185,6 +185,7 @@ do
   index=$[$index+1]
 done
 
+echo -e "开始安装npm "
 #node_modules路径
 nodePath="/jd/scripts/node_modules"
 #判断panel文件夹是否存在，若不存在，复制/jd目录内
@@ -195,16 +196,19 @@ if [[ ! -d "$nodePath" ]]; then
 else
  echo "npm存在."
 fi
+
+echo -e "开始创建auto.json文件 "
 ###创建auto.json文件。没有这个文件无法登录进面板
 dirAndName="/jd/config/auth.json"
 if [[ ! -d "$dirAndName" ]]; then
-mkdir $dirAndName
-echo "创建文件夹成功"
-echo "{"user":"admin","password":"adminadmin"}" >>auto.json
+ mkdir $dirAndName
+ echo "创建文件成功"
+ echo "{"user":"admin","password":"adminadmin"}" >>auto.json
 else
-echo "文件夹已经存在"
+ echo "文件已经存在"
 fi
 
+echo -e "启动面板 "
 #panel路径#######需要把panel复制到config目录下
 PanelPath="/jd/panel"
 #判断panel文件夹是否存在，若不存在，复制/jd目录内
@@ -220,6 +224,7 @@ fi
 
 ############################## 恢复HomePage ##############################
 ##panelDir=${ShellDir}/panel/public
+echo -e "开始更新恢复home "
 cd /jd/panel/public
 wget -q --no-check-certificate https://ghproxy.com/https://raw.githubusercontent.com/gys619/diy/main/home.html -O home.html.new
 if [ $? -eq 0 ]; then
